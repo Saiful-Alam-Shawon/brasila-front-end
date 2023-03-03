@@ -1,0 +1,45 @@
+@media screen and (max-width: 600px) {
+    .small {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .offers {
+        display: flex;
+        justify-content: center;
+    }
+
+    .promotions {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .comment {
+        display: none;
+    }
+
+    .room {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        position: relative;
+    }
+
+    .button {
+        width: 80%;
+    }
+
+    .contact {
+        width: 100%;
+    }
+
+    .meeting {
+        margin-left: 12px;
+        margin-right: 12px;
+    }
+
+    .margin {
+        margin-left: 12px;
+    }
+
+}
