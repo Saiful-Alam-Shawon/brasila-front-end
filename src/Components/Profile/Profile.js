@@ -131,70 +131,80 @@ const Profile = () => {
 
                         <div className='grid grid-cols-1 gap-3'>
                             {
-                                bookingData.map(bookings =>
+                                bookingData.length > 0 ?
+                                    <>
+                                        {
+                                            bookingData.map(bookings =>
 
 
-                                    <div className="hero min-h-screen" style={{ backgroundImage: `url("https://i.ibb.co/VBXVfrM/h-b1.jpg")` }}
-                                        key={bookings._id}
-                                    >
-                                        {/* <div className="hero min-h-screen" style={{ backgroundImage: { images } }}> */}
-                                        {/* <div className="hero min-h-screen" style={{ backgroundImage: `url('`bookingData[0]?.img1`')` }}> */}
-                                        <div className="hero-overlay bg-opacity-60"></div>
-                                        <div className="hero-content text-center text-neutral-content">
-                                            <div className="max-w-md">
-                                                <h1 className="mb-5 text-5xl font-bold">{bookings?.title}</h1>
-                                                <p className='mb-2'>You are staying from {bookings.fromDate} to {bookings?.toDate} with {bookings?.people} members
-                                                </p>
-                                                <p className='mb-5'>Your Cost is ${bookings?.totalPrice}</p>
-                                                {/* <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p> */}
-                                                <div>
-                                                    {bookings?.status === 'Paid' ?
-                                                        <>
-                                                            <Link to='/review'>
-                                                                <button className='bg-yellow-300 py-2 px-6 my-3 text-black mr-3 uppercase'>Rate Us</button>
-                                                            </Link>
+                                                <div className="hero min-h-screen" style={{ backgroundImage: `url("https://i.ibb.co/VBXVfrM/h-b1.jpg")` }}
+                                                    key={bookings._id}
+                                                >
+                                                    {/* <div className="hero min-h-screen" style={{ backgroundImage: { images } }}> */}
+                                                    {/* <div className="hero min-h-screen" style={{ backgroundImage: `url('`bookingData[0]?.img1`')` }}> */}
+                                                    <div className="hero-overlay bg-opacity-60"></div>
+                                                    <div className="hero-content text-center text-neutral-content">
+                                                        <div className="max-w-md">
+                                                            <h1 className="mb-5 text-5xl font-bold">{bookings?.title}</h1>
+                                                            <p className='mb-2'>You are staying from {bookings.fromDate} to {bookings?.toDate} with {bookings?.people} members
+                                                            </p>
+                                                            <p className='mb-5'>Your Cost is ${bookings?.totalPrice}</p>
+                                                            {/* <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p> */}
+                                                            <div>
+                                                                {bookings?.status === 'Paid' ?
+                                                                    <>
+                                                                        <Link to='/review'>
+                                                                            <button className='bg-yellow-300 py-2 px-6 my-3 text-black mr-3 uppercase'>Rate Us</button>
+                                                                        </Link>
 
-                                                        </>
-                                                        :
-                                                        <>
-                                                            <button className='bg-yellow-300 py-2 px-6 my-3 text-black mr-3 uppercase'
-                                                                onClick={() => { handleDelete(bookings._id) }}
-                                                            >Cancel Booking</button>
+                                                                    </>
+                                                                    :
+                                                                    <>
+                                                                        <button className='bg-yellow-300 py-2 px-6 my-3 text-black mr-3 uppercase'
+                                                                            onClick={() => { handleDelete(bookings._id) }}
+                                                                        >Cancel Booking</button>
 
-                                                            <StripeCheckout
-                                                                currency='USD'
-                                                                amount={bookings?.totalPrice * 100}
-                                                                token={onToken}
-                                                                // email={useremail}
-                                                                stripeKey="pk_test_51MAQCQFQ87m4QnJ0whHlzBOxZcTypWvk4vL6MrH0H31KhXXyPbpRYDK1xglR2Z1uPSRh5rWro3ZDUwygWmEzOwjy00fyNMPxe1"
-                                                            // secret key= 'sk_test_51MAQCQFQ87m4QnJ0AQXjIKe3hGtA7q1yNQnXJHfZdS76SbFcgXyNjaB57ABKmUloLsQTeKqdcybUcpPqjzAx3kvn00hv4PwSr0'
-                                                            >
-                                                                <button className='bg-yellow-300 py-2 px-6 my-3 text-black mr-3 uppercase'
-                                                                >
-                                                                    Pay Now
-                                                                </button>
-                                                            </StripeCheckout>
-                                                        </>
+                                                                        <StripeCheckout
+                                                                            currency='USD'
+                                                                            amount={bookings?.totalPrice * 100}
+                                                                            token={onToken}
+                                                                            // email={useremail}
+                                                                            stripeKey="pk_test_51MAQCQFQ87m4QnJ0whHlzBOxZcTypWvk4vL6MrH0H31KhXXyPbpRYDK1xglR2Z1uPSRh5rWro3ZDUwygWmEzOwjy00fyNMPxe1"
+                                                                        // secret key= 'sk_test_51MAQCQFQ87m4QnJ0AQXjIKe3hGtA7q1yNQnXJHfZdS76SbFcgXyNjaB57ABKmUloLsQTeKqdcybUcpPqjzAx3kvn00hv4PwSr0'
+                                                                        >
+                                                                            <button className='bg-yellow-300 py-2 px-6 my-3 text-black mr-3 uppercase'
+                                                                            >
+                                                                                Pay Now
+                                                                            </button>
+                                                                        </StripeCheckout>
+                                                                    </>
 
-                                                    }
-                                                    {/* <button className='bg-yellow-300 py-2 px-6 my-3 text-black mr-3 uppercase'>Rate Us</button> */}
-
-
+                                                                }
+                                                                {/* <button className='bg-yellow-300 py-2 px-6 my-3 text-black mr-3 uppercase'>Rate Us</button> */}
 
 
 
 
-                                                    {/* <button className="text-xs text-black uppercase bg-yellow-300 px-5 py-2 ">Pay Now</button> */}
 
+
+                                                                {/* <button className="text-xs text-black uppercase bg-yellow-300 px-5 py-2 ">Pay Now</button> */}
+
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
                                                 </div>
 
-                                            </div>
-                                        </div>
-                                    </div>
 
-
-                                )
+                                            )
+                                        }
+                                    </>
+                                    :
+                                    <>
+                                        <p className='text-3xl font-bold text-center text-orange-700'>You Have No Booking !!!</p>
+                                    </>
                             }
+
                         </div>
 
 

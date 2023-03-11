@@ -56,7 +56,8 @@ const Search = () => {
     const handleBookWithoutUser = () => {
         // toast.warn('Please, Log In first');
         // toast('User Created Successfully')
-        alert('Please Log In First')
+        alert('Please Log In First');
+        navigate('/login');
         // console.log('No User Presented');
     };
 
@@ -143,6 +144,13 @@ const Search = () => {
             handlePayment(_id);
         }
     }
+    const handleBookWithoutUser1 = () => {
+        // toast.warn('Please, Log In first');
+        // toast('User Created Successfully')
+        alert('Please Log In First');
+        navigate('/login');
+        // console.log('No User Presented');
+    };
 
 
 
@@ -168,65 +176,63 @@ const Search = () => {
                             <p>Rent  {price} <span>/day</span> </p>
                             <p>And Total Cost {totalPrice} </p>
                         </div>
-                        <div>
-                            {/* Start DatePicker from AntD */}
-                            {/* <Space direction="vertical" size={12}>
-                                <RangePicker format='DD-MM-YYYY' onChange={dataRange} />
-                            </Space> */}
-                            {/* Start DatePicker from AntD */}
-                        </div>
-                        {/* <div>
-                            <Menu as='div' className='bg-yellow-300 text-black relative' >
-                                <Menu.Button className='w-full h-full px-4 py-3 flex items-center justify-between'>
-                                    {adults}
-                                    <BsChevronDown className='text-base' />
-                                </Menu.Button>
-                                <Menu.Items as='ul' className='bg-white w-full flex-col z-40 absolute'>
-                                    {
-                                        list.map((li, index) => {
-                                            return <Menu.Item as='li' className='border-b last-of-type:border-b-0 h-12 hover:bg-yellow-100 w-full flex items-center justify-center cursor-pointer' key={index}
-                                                onClick={() => handleAdults(li.value, "Adults")}
-                                            > {li.name}</Menu.Item>
-                                        })
-                                    }
-                                </Menu.Items>
-                            </Menu>
-                        </div> */}
-                        <StripeCheckout
-                            currency='USD'
-                            amount={price * totaldays * 100}
-                            token={onToken}
-                            stripeKey="pk_test_51MAQCQFQ87m4QnJ0whHlzBOxZcTypWvk4vL6MrH0H31KhXXyPbpRYDK1xglR2Z1uPSRh5rWro3ZDUwygWmEzOwjy00fyNMPxe1"
-                        >
-                            <button className='bg-yellow-300 py-2 px-6 my-3 text-black mr-3'
-                            >
-                                Pay Now
-                            </button>
-                        </StripeCheckout>
-                        {
-                            email ?
-                                <>
-                                    <button className='bg-yellow-300 py-2 px-6 my-3 text-black '
-                                        onClick={handleBookWithUser}
-                                    >
-                                        Book Now
-                                    </button>
-                                </>
-                                :
-                                <>
-                                    <button className='bg-yellow-300 py-2 px-6 my-3 text-black '
-                                        onClick={handleBookWithoutUser}
-                                    >
-                                        Book Now
-                                    </button>
 
-                                </>
-                        }
-                        {/* <button className='bg-yellow-300 py-2 px-6 my-3 text-black '
-                        // onClick={() => handleFind(adults)}
-                        >
-                            Book Now
-                        </button> */}
+                        <div className='grid lg:grid-cols-2 w-2/4'>
+                            <div>
+                                <StripeCheckout
+                                    currency='USD'
+                                    amount={price * totaldays * 100}
+                                    token={onToken}
+                                    // token={onToken1}
+                                    stripeKey="pk_test_51MAQCQFQ87m4QnJ0whHlzBOxZcTypWvk4vL6MrH0H31KhXXyPbpRYDK1xglR2Z1uPSRh5rWro3ZDUwygWmEzOwjy00fyNMPxe1"
+                                >
+                                    {
+                                        email ?
+                                            <>
+                                                <button className='bg-yellow-300 py-2 px-6  text-black '
+                                                >
+                                                    Pay Now
+                                                </button>
+                                            </>
+                                            :
+                                            <>
+                                            </>
+                                    }
+                                </StripeCheckout>
+                                {!email &&
+
+
+                                    <>
+                                        <button className='bg-yellow-300 py-2 px-6  text-black '
+                                            onClick={handleBookWithoutUser1} >
+                                            Pay Now
+                                        </button>
+                                    </>
+                                }
+                            </div>
+
+
+                            {/* </StripeCheckout> */}
+                            {
+                                email ?
+                                    <>
+                                        <button className='bg-yellow-300 px-6 py-2 w-full mx-auto text-black '
+                                            onClick={handleBookWithUser}
+                                        >
+                                            Book Now
+                                        </button>
+                                    </>
+                                    :
+                                    <>
+                                        <button className='bg-yellow-300 py-2 px-6  text-black mr-3'
+                                            onClick={handleBookWithoutUser}
+                                        >
+                                            Book Now
+                                        </button>
+                                    </>
+                            }
+                        </div>
+
                     </div>
                 </div>
             </div>

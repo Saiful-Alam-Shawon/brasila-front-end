@@ -168,49 +168,62 @@ const RoomDetails = () => {
                                 </Menu.Items>
                             </Menu>
                         </div>
-                        <StripeCheckout
-                            currency='USD'
-                            amount={price * totalDays * 100}
-                            token={onToken}
-                            // token={onToken1}
-                            stripeKey="pk_test_51MAQCQFQ87m4QnJ0whHlzBOxZcTypWvk4vL6MrH0H31KhXXyPbpRYDK1xglR2Z1uPSRh5rWro3ZDUwygWmEzOwjy00fyNMPxe1"
-                        >
-                            {
-                                email ?
-                                    <>
-                                        <button className='bg-yellow-300 py-2 px-6  text-black mr-3'
-                                        >
-                                            Pay Now
-                                        </button>
-                                    </>
-                                    :
+                        <div className='grid lg:grid-cols-2 w-2/4'>
+                            <div>
+                                <StripeCheckout
+                                    currency='USD'
+                                    amount={price * totalDays * 100}
+                                    token={onToken}
+                                    // token={onToken1}
+                                    stripeKey="pk_test_51MAQCQFQ87m4QnJ0whHlzBOxZcTypWvk4vL6MrH0H31KhXXyPbpRYDK1xglR2Z1uPSRh5rWro3ZDUwygWmEzOwjy00fyNMPxe1"
+                                >
+                                    {
+                                        email ?
+                                            <>
+                                                <button className='bg-yellow-300 py-2 px-6  text-black '
+                                                >
+                                                    Pay Now
+                                                </button>
+                                            </>
+                                            :
+                                            <>
+                                            </>
+                                    }
+                                </StripeCheckout>
+                                {!email &&
+
+
                                     <>
                                         <button className='bg-yellow-300 py-2 px-6  text-black mr-3'
                                             onClick={handleBookWithoutUser1} >
                                             Pay Now
                                         </button>
                                     </>
-                            }
+                                }
+                            </div>
 
-                        </StripeCheckout>
-                        {
-                            email ?
-                                <>
-                                    <button className='bg-yellow-300 px-7 py-[12px] w-full mx-auto text-black '
-                                        onClick={handleBookWithUser}
-                                    >
-                                        Book Now
-                                    </button>
-                                </>
-                                :
-                                <>
-                                    <button className='bg-yellow-300 py-2 px-6  text-black mr-3'
-                                        onClick={handleBookWithoutUser}
-                                    >
-                                        Book Now
-                                    </button>
-                                </>
-                        }
+
+                            {/* </StripeCheckout> */}
+                            {
+                                email ?
+                                    <>
+                                        <button className='bg-yellow-300 px-6 py-2 w-full mx-auto text-black '
+                                            onClick={handleBookWithUser}
+                                        >
+                                            Book Now
+                                        </button>
+                                    </>
+                                    :
+                                    <>
+                                        <button className='bg-yellow-300 py-2 px-6  text-black mr-3'
+                                            onClick={handleBookWithoutUser}
+                                        >
+                                            Book Now
+                                        </button>
+                                    </>
+                            }
+                        </div>
+
                     </div>
                 </div>
             </div>
