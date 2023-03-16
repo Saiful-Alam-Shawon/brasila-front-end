@@ -36,12 +36,12 @@ const router = createBrowserRouter([
             {
                 path: '/rooms/:id',
                 element: <RoomDetails></RoomDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/allRooms/${params.id}`)
+                loader: ({ params }) => fetch(`https://brasila-server.vercel.app/allRooms/${params.id}`)
             },
             {
                 path: '/search/:total',
                 element: <Search></Search>,
-                loader: ({ params }) => fetch(`http://localhost:5000/search/${params.total}`)
+                loader: ({ params }) => fetch(`https://brasila-server.vercel.app/search/${params.total}`)
             },
             {
                 path: '/restaurant',
@@ -95,12 +95,6 @@ const router = createBrowserRouter([
                 path: '/specialOffer',
                 element: <Offer></Offer>
             },
-            // {
-            //     path: '/payment/:id',
-            //     element: <Payment></Payment>,
-            //     loader: ({ params }) => fetch(`http://localhost:5000/pay/${params.id}`)
-            // },
-
 
         ]
     }

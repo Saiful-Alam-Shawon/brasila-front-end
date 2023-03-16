@@ -20,27 +20,6 @@ const Contact = () => {
                         <div className='p-7'>03</div>
                     </div>
 
-                    {/* <div className='flex items-center mr-1'>
-                  
-                    <div>
-                        <button className='bg-slate-700 p-3'>
-                            Wed. 12/21/22
-                        </button>
-                    </div>
-                    <div>
-                        <button className='bg-slate-700 p-3'>
-                            Wed. 12/21/22
-                        </button>
-                    </div>
-
-                </div>
-
-                <div>
-                    <button className='bg-slate-700 py-3 px-7'>
-                        1 chambre - 1 occupant
-                    </button>
-                </div> */}
-
                 </div>
             </div>
 

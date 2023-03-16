@@ -1,8 +1,5 @@
-import { Menu } from '@headlessui/react';
-import { DatePicker, Space } from 'antd';
-import moment from 'moment';
-import React, { useContext, useState } from 'react';
-import { BsChevronDown } from 'react-icons/bs';
+
+import React, { useContext } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import StripeCheckout from 'react-stripe-checkout';
 import { toast, ToastContainer } from 'react-toastify';
@@ -25,11 +22,7 @@ const Search = () => {
     const totalPrice = price * totaldays;
     const navigate = useNavigate();
     // console.log(email);
-
-    // console.log("fromDate", fromDate, "Todate", toDate, "totalDays", totaldays, "TotalPerson", person);
-
-    const id = data._id
-    console.log(_id);
+    // console.log(_id);
     // const [fromDate, setFromDate] = useState('');
     // const [toDate, setToDate] = useState('');
     // const staDate = moment(fromDate, 'DD-MM-YYYY');
@@ -54,8 +47,6 @@ const Search = () => {
 
 
     const handleBookWithoutUser = () => {
-        // toast.warn('Please, Log In first');
-        // toast('User Created Successfully')
         alert('Please Log In First');
         navigate('/login');
         // console.log('No User Presented');
@@ -69,7 +60,7 @@ const Search = () => {
 
         // console.log(bookingData);
 
-        fetch('http://localhost:5000/booking', {
+        fetch('https://brasila-server.vercel.app/booking', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -81,9 +72,6 @@ const Search = () => {
                 console.log(data);
                 if (data.acknowledged) {
                     navigate('/profile');
-                    // setLoading(false);
-                    // setIsreload(!isreload);
-                    // toast.success('Successfully User Created')
                 }
             })
             .catch(error => console.log(error.message));
@@ -94,7 +82,7 @@ const Search = () => {
     const handlePayment = _id => {
         // console.log("Handle Payment is hited", _id);
 
-        fetch('http://localhost:5000/booking', {
+        fetch('https://brasila-server.vercel.app/booking', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -103,53 +91,28 @@ const Search = () => {
         })
             .then(res => res.json())
             .then(data => {
-                // console.log(data);
                 if (data.acknowledged) {
                     // console.log("Posted");
                     navigate('/profile');
-                    // setLoading(false);
-                    // setIsreload(!isreload);
-                    // toast.success('Successfully User Created')
                 }
             })
             .catch(error => console.log(error.message));
 
-
-
-
-        // fetch(`http://localhost:5000/booking/status/${_id}`, {
-        //     method: 'PUT'
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         console.log(data);
-
-        //         if (data.modifiedCount > 0)
-        // navigate('/profile');
-        // setLoading(false);
-        // setIsreload(!isreload);
-        // toast.success('User Updated')
-        // })
     };
 
+
     const onToken = (token) => {
-        // console.log("Every");
-        // console.log(token.id);
 
         if (!token.id) {
             console.log('No token');
             alert(`Something wrong, Please try Again`);
         } else {
-            // console.log(token.id, id);
             handlePayment(_id);
         }
     }
     const handleBookWithoutUser1 = () => {
-        // toast.warn('Please, Log In first');
-        // toast('User Created Successfully')
         alert('Please Log In First');
         navigate('/login');
-        // console.log('No User Presented');
     };
 
 

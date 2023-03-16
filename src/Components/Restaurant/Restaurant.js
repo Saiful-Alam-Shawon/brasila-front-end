@@ -2,9 +2,6 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { BsFillStopwatchFill } from 'react-icons/bs';
-import image from '../../image/res-b-1.jpg'
-import herb from '../../image/res-body-herbs.jpg'
-import captain from '../../image/res-body-herbs.jpg';
 import '../Header/Banner.css'
 import BookingModal from '../Modal/BookingModal';
 
@@ -13,7 +10,7 @@ const Restaurant = () => {
     const [restaurant, setRestaurant] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/restaurantInfo')
+        fetch('https://brasila-server.vercel.app/restaurantInfo')
             .then(res => res.json())
             // .then(data => console.log(data))
             .then(data => setRestaurant(data))
@@ -103,7 +100,6 @@ const Restaurant = () => {
                     <div className='mt-4 pb-1 border-b border-dotted  border-gray-300'>
                         <div className='flex justify-between'>
                             <div className='flex'>
-                                {/* <p className='text-sm'>icn</p> */}
                                 <BsFillStopwatchFill />
                                 <h1 className='ml-2 text-sm'>
                                     Monday

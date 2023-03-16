@@ -11,8 +11,6 @@ const Payment = () => {
 
     return (
         <div className='p-24 w-2/4'>
-            {/* Payment Request for {data._id} */}
-            {/* Payment Request for */}
 
             <Elements stripe={stripePromise}>
                 <CheckOut></CheckOut>

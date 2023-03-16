@@ -3,7 +3,7 @@ import { DatePicker, Space } from 'antd';
 import moment from 'moment';
 import React, { useContext, useState } from 'react';
 import { BsChevronDown } from 'react-icons/bs';
-import { Link, useLoaderData, useLocation, useNavigate } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import StripeCheckout from 'react-stripe-checkout';
 import { AuthShare } from '../Context/AuthContext';
 
@@ -17,7 +17,6 @@ const list = [
 
 
 const RoomDetails = () => {
-    // const { fromDate, toDate, totaldays, person, user } = useContext(AuthShare)
     const { user } = useContext(AuthShare);
     const data = useLoaderData();
     const { imgh, people, price, text, title, _id } = data;
@@ -32,8 +31,6 @@ const RoomDetails = () => {
     const totalPrice = price * totalDays;
     const { RangePicker } = DatePicker;
     const dataRange = (dates) => {
-        // console.log(moment(dates[0]).format('DD-MM-YYYY'));
-        // console.log(moment(dates[1]).format('DD-MM-YYYY'));
         setFromDate(dates[0].format('DD-MM-YYYY'));
         setToDate(dates[1].format('DD-MM-YYYY'));
     };
@@ -53,7 +50,7 @@ const RoomDetails = () => {
 
         console.log(bookingData);
 
-        fetch('http://localhost:5000/booking', {
+        fetch('https://brasila-server.vercel.app/booking', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -65,9 +62,6 @@ const RoomDetails = () => {
                 console.log(data);
                 if (data.acknowledged) {
                     navigate('/profile');
-                    // setLoading(false);
-                    // setIsreload(!isreload);
-                    // toast.success('Successfully User Created')
                 }
             })
             .catch(error => console.log(error.message));
@@ -76,14 +70,10 @@ const RoomDetails = () => {
     };
 
     const handleBookWithoutUser = () => {
-        // toast.warn('Please, Log In first');
-        // toast('User Created Successfully')
         alert('Please Log In First')
         // console.log('No User Presented');
     };
     const handleBookWithoutUser1 = () => {
-        // toast.warn('Please, Log In first');
-        // toast('User Created Successfully')
         alert('Please Log In First');
         navigate('/login');
         // console.log('No User Presented');
@@ -94,7 +84,7 @@ const RoomDetails = () => {
     const handlePayment = _id => {
         console.log("Handle Payment is hited", bookingData, _id);
 
-        fetch('http://localhost:5000/booking', {
+        fetch('https://brasila-server.vercel.app/booking', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -107,16 +97,12 @@ const RoomDetails = () => {
                 if (data.acknowledged) {
                     console.log("Posted");
                     navigate('/profile');
-                    // setLoading(false);
-                    // setIsreload(!isreload);
-                    // toast.success('Successfully User Created')
                 }
             })
             .catch(error => console.log(error.message));
     }
 
     const onToken = (token, totalDays) => {
-        // console.log("Every");
         // console.log(token.id);
 
         if (!totalDays) {
@@ -145,11 +131,15 @@ const RoomDetails = () => {
                             <p className='font-bold text-red-900'>{price}/day</p>
                         </div>
                         <div className='w-2/4  '>
+
                             {/* Start DatePicker from AntD */}
+
                             <Space direction="vertical" size={12}>
                                 <RangePicker className='px-4 py-[10px] bg-yellow-300 rounded-none' format='DD-MM-YYYY' onChange={dataRange} />
                             </Space>
-                            {/* Start DatePicker from AntD */}
+
+                            {/* Clsoe DatePicker from AntD */}
+
                         </div>
                         <div>
                             <Menu as='div' className=' text-black relative my-5' >

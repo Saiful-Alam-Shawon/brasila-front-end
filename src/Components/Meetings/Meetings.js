@@ -1,7 +1,5 @@
 import React from 'react';
-// import image from '../../image/m-b1.jpg'
 import image from '../../image/meeting.jpg'
-// import event from '../../image/m-event.jpg'
 import contact from '../../image/m-contact-meeting-default.jpg'
 import event from '../../image/allkinds.jpg'
 import { FaSearchLocation, FaPhoneAlt, FaVoicemail } from 'react-icons/fa';
@@ -25,7 +23,6 @@ const Meetings = () => {
                         <label htmlFor="my-modal-3" className='mt-4 rounded-full px-3 py-1 w-3/5 text-sm bg-yellow-300'>
                             REQUEST A QUOTE
                         </label>
-                        {/* <label htmlFor="my-modal-3" className="btn">open modal</label> */}
                     </div>
                 </div>
             </div>
@@ -35,196 +32,11 @@ const Meetings = () => {
             <div className='m-6'>
                 <ul className='flex justify-center'>
                     <li className='mx-1'><a href=" "> Events</a></li>
-                    {/* <li className='mx-1'><a href=" #"> Herbs</a></li> */}
                 </ul>
                 <p className='h-1 w-full bg-gray-400 '></p>
             </div>
 
             <BookingModal></BookingModal>
-
-            {/* Our Meeting Rooms */}
-
-
-            {/* <div className='m-6 grid grid-cols-12 '>
-                <div className='col-span-4 p-4'>
-                    <h1 className='text-xl font-bold'>
-                        Need to rock your business meetings?
-                    </h1>
-                    <p className='text-sm mt-5'>
-                        For events, the hotel has independent entrance, parking, work station and a lobby with wifi access. There are 26 meeting spaces, a theater and a ball room that can accommodate up to 1,500 people.
-                    </p>
-                </div>
-
-                <div className='col-span-8'>
-                    <h1 className='text-lg font-bold'>Capacity</h1>
-
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>
-                                    Daylight
-                                </th>
-                                <th>
-                                    Theater
-                                </th>
-                                <th>
-                                    Classroom
-                                </th>
-                                <th>
-                                    Banquet
-                                </th>
-                                <th>
-                                    U-shaped
-                                </th>
-                                <th>
-                                    Boardroom
-                                </th>
-                                <th>
-                                    Cabaret
-                                </th>
-                            </tr>
-                            <tbody>
-                                <tr>
-
-                                </tr>
-                                <tr></tr>
-                                <tr></tr>
-                                <tr></tr>
-                            </tbody>
-                        </thead>
-                    </table>
-
-
-
-
-
-                    <div className='text-sm'>
-                        <div>
-                            <div className='grid grid-cols-10 align-middle'>
-                                <h1></h1>
-                                <h1></h1>
-                                <h1>Daylight	</h1>
-                                <h1>Theater	</h1>
-                                <h1>Classroom	</h1>
-                                <h1>Banquet	</h1>
-                                <h1>Cocktail	</h1>
-                                <h1>U-shaped	</h1>
-                                <h1>Boardroom	</h1>
-                                <h1>Cabaret</h1>
-                            </div>
-                            <div className='grid grid-cols-10 text-center'>
-                                <div>
-                                    <h1>Room A</h1>
-                                    <h6 className='text-xs'>39.2m² </h6>
-                                </div>
-                                <h1>
-
-                                </h1>
-                                <h1>-		</h1>
-                                <h1>33	</h1>
-                                <h1>21	</h1>
-                                <h1>20		</h1>
-                                <h1>35	</h1>
-                                <h1>15	</h1>
-                                <h1>	12	</h1>
-                                <h1>10	</h1>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className='text-sm'>
-                        <div>
-                            <div className='grid grid-cols-10'>
-                                <h1></h1>
-                                <h1></h1>
-                                <h1>Daylight	</h1>
-                                <h1>Theater	</h1>
-                                <h1>Classroom	</h1>
-                                <h1>Banquet	</h1>
-                                <h1>Cocktail	</h1>
-                                <h1>U-shaped	</h1>
-                                <h1>Boardroom	</h1>
-                                <h1>Cabaret</h1>
-                            </div>
-                            <div className='grid grid-cols-10'>
-                                <h1>Room A</h1>
-                                <h1></h1>
-                                <h1>-		</h1>
-                                <h1>33	</h1>
-                                <h1>21	</h1>
-                                <h1>20		</h1>
-                                <h1>35	</h1>
-                                <h1>15	</h1>
-                                <h1>	12	</h1>
-                                <h1>10	</h1>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className='text-sm'>
-                        <div>
-                            <div className='grid grid-cols-10'>
-                                <h1></h1>
-                                <h1></h1>
-                                <h1>Daylight	</h1>
-                                <h1>Theater	</h1>
-                                <h1>Classroom	</h1>
-                                <h1>Banquet	</h1>
-                                <h1>Cocktail	</h1>
-                                <h1>U-shaped	</h1>
-                                <h1>Boardroom	</h1>
-                                <h1>Cabaret</h1>
-                            </div>
-                            <div className='grid grid-cols-10'>
-                                <h1>Room A</h1>
-                                <h1></h1>
-                                <h1>-		</h1>
-                                <h1>33	</h1>
-                                <h1>21	</h1>
-                                <h1>20		</h1>
-                                <h1>35	</h1>
-                                <h1>15	</h1>
-                                <h1>	12	</h1>
-                                <h1>10	</h1>
-                            </div>
-                        </div>
-                    </div >
-
-                    <div className='text-sm'>
-                        <div>
-                            <div className='grid grid-cols-10'>
-                                <h1></h1>
-                                <h1></h1>
-                                <h1>Daylight	</h1>
-                                <h1>Theater	</h1>
-                                <h1>Classroom	</h1>
-                                <h1>Banquet	</h1>
-                                <h1>Cocktail	</h1>
-                                <h1>U-shaped	</h1>
-                                <h1>Boardroom	</h1>
-                                <h1>Cabaret</h1>
-                            </div>
-                            <div className='grid grid-cols-10'>
-                                <h1>Room A</h1>
-                                <h1></h1>
-                                <h1>-		</h1>
-                                <h1>33	</h1>
-                                <h1>21	</h1>
-                                <h1>20		</h1>
-                                <h1>35	</h1>
-                                <h1>15	</h1>
-                                <h1>	12	</h1>
-                                <h1>10	</h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-            </div> */}
-
-            {/* Your Events */}
 
             <div className='m-6 meeting'>
                 <div className='grid lg:grid-cols-2 mt-12'>
@@ -292,30 +104,6 @@ const Meetings = () => {
 
                 </div>
             </div>
-
-            {/* List of Choice */}
-
-            {/* <div className='grid grid-cols-12 m-6 '>
-                <div className='col-span-4  bg-slate-900 text-white p-8'>
-                    <h1 className='px-8 py-5 text-xl font-bold'>
-                        Lot of choices
-                    </h1>
-                    <div className='text-sm px-8'>
-                        <p>International Catering</p>
-                        <p>Multi language team</p>
-                        <p>Infrastructure</p>
-                        <p>Private Security</p>
-                        <p>Independent Entrance</p>
-                    </div>
-                </div>
-                <div className='col-span-8'>
-                    <h1 className='  p-8 mx-auto text-sm content-center'>
-                        For events, the hotel has independent entrance, parking, work station and a lobby with wifi access. There are 26 meeting spaces, a theater and a ball room that can accommodate up to 1,500 people.
-                    </h1>
-                </div>
-            </div> */}
-
-
         </div>
     );
 };

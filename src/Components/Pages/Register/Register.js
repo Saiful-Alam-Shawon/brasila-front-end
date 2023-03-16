@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import { AuthShare } from '../../Context/AuthContext';
 
 const Register = () => {
@@ -20,31 +19,19 @@ const Register = () => {
         }
 
         createUser(email, password)
-            // .then(result => {
-            //     const user = result.user;
-            //     console.log(user);
-            //         .then(() => {user })
-            //         .catch(error => console.log(error.message));
-            //     console.log(name, email, select, password);
-            // })
-            // .catch(error => setError(error.message));
-
             .then((userCredential) => {
-                // Signed in 
                 const user = userCredential.user;
                 console.log(user);
-                // ...
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                // ..
             });
 
 
 
 
-        fetch('http://localhost:5000/users', {
+        fetch('https://brasila-server.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -56,29 +43,9 @@ const Register = () => {
                 console.log(data);
                 if (data.acknowledged) {
                     navigate('/');
-                    // setLoading(false);
-                    // setIsreload(!isreload);
-                    // toast.success('Successfully User Created')
                 }
             })
             .catch(error => console.log(error.message));
-
-        // console.log(id);
-        // fetch(`http://localhost:5000/BuyerProduct/${id}`, {
-        //     method: 'DELETE'
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         if (data.deletedCount > 0)
-        // console.log(data);
-
-        //         toast.success('Course Cancel Successfully')
-        //     setLoading(false);
-        //     setIsreload(!isreload);
-        // })
-
-
-
 
         console.log(email, password);
     }

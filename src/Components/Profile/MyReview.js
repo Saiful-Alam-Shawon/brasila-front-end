@@ -26,34 +26,20 @@ const MyReview = () => {
 
                         }}
                     >
-                        {/* <Link className='mx-4' to='/profile'><Breadcrumb.Item >Home</Breadcrumb.Item></Link> */}
-                        {/* <Link to='/review'> */}
-                        {/* <Breadcrumb.Item href=''><Link to='/review'>Rate Us</Link> </Breadcrumb.Item> */}
-                        {/* </Link> */}
-                        {/* <Link to='/myreview'><Breadcrumb.Item href=''>My Reviews</Breadcrumb.Item></Link> */}
-
-
-                        {/* <Link to='/profile'> */}
                         <Breadcrumb.Item  >
                             <Link to='/profile'>
                                 Home
                             </Link>
                         </Breadcrumb.Item>
-                        {/* </Link> */}
-                        {/* <Link to='/review'> */}
                         <Breadcrumb.Item href=''>
                             <Link to='/review'>
                                 Rate Us
                             </Link>
                         </Breadcrumb.Item>
-                        {/* </Link> */}
-                        {/* <Link to='/myreview'> */}
                         <Breadcrumb.Item href=''>
                             <Link to='/myreview'>
                                 My Reviews
                             </Link></Breadcrumb.Item>
-                        {/* </Link> */}
-
                     </Breadcrumb>
                     <div
                         className="site-layout-content"
@@ -76,7 +62,6 @@ const MyReview = () => {
                                         <div className="chat-bubble">It was said that you would, destroy the Sith, not join them.It was said that you would, destroy the Sith, not join them.It was said that you would, destroy the Sith, not join them.It was said that you would, destroy the Sith, not join them.</div>
                                     </div>
                                     <div className='felx items-end justify-end mt-2'>
-                                        {/* <button className='px-3 py-2 bg-yellow-300 text-black text-xs'>Delete Review</button> */}
                                     </div>
                                 </div>
 

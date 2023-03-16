@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { } from 'react';
 import image from '../../image/ser-b1.jpg'
 import pools from '../../image/ser-body-spa.jpg'
 import spa from '../../image/ser-body-spa1.jpg'
@@ -11,10 +11,8 @@ import '../Header/Banner.css'
 const Services = () => {
 
 
-    const [services, setServices] = useState([]);
-
     useEffect(() => {
-        fetch('http://localhost:5000/servicesInfo')
+        fetch('https://brasila-server.vercel.app/servicesInfo')
             .then(res => res.json())
             .then(data => console.log(data))
         // .then(data=>setServices(data))

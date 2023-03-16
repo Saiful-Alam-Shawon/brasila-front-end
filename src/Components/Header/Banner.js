@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import image from '../../image/h-b1.jpg';
-import image2 from '../../image/h-body.jpg';
 import wifi from '../../image/ICONS_GT_SA_WIFI.svg'
 import aircondition from '../../image/ICONS_GT_PF_AIRCONDITIONNED.svg'
 import restaurant from '../../image/ICONS_GT_PF_RESTAURANT.svg'
@@ -9,14 +7,8 @@ import parking from '../../image/ICONS_GT_SA_PARKINGGARAGE.svg'
 import securedParking from '../../image/ICONS_GT_SA_SECUREDPARKING.svg'
 import outdoorPool from '../../image/ICONS_GT_RP_OUTDOORPOOL.svg'
 import spa from '../../image/ICONS_GT_RP_SPA.svg'
-import barImage from '../../image/h-restaurant.jpg'
-import senior from '../../image/offers-body-3.jpg'
-import image4 from '../../image/h-promtions-2.jpg';
-import image5 from '../../image/h-promtions-3.jpg';
-// import DatePicker from "react-datepicker";
-// import "react-datepicker/dist/react-datepicker.css";
-import { FaBeer, FaPhoneAlt, FaPhoneSquareAlt, FaSearchLocation, FaStar, FaStarHalfAlt, FaUserAlt, FaVoicemail } from 'react-icons/fa';
-import { BsCalendar, BsChevronDown } from 'react-icons/bs';
+import { FaPhoneAlt, FaSearchLocation, FaUserAlt, FaVoicemail } from 'react-icons/fa';
+import { BsChevronDown } from 'react-icons/bs';
 import { Menu } from '@headlessui/react';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
@@ -27,7 +19,6 @@ import { DatePicker, Space } from 'antd';
 import 'antd/dist/reset.css';
 import moment from 'moment';
 import './Banner.css'
-import { stringify } from 'postcss';
 import Loading from '../Loading';
 
 
@@ -44,76 +35,46 @@ const list = [
 
 const Banner = () => {
 
-    // const [startDate, setStartDate] = useState(new Date());
-    // const [startDate, setStartDate] = useState(false);
-    // const [endDate, setEndDate] = useState(false);
-    // const [isreload, setIsreload] = useState(true);
     const [homePageInfo, setHomePageInfo] = useState([]);
     const [promotionInfo, setPromotionInfo] = useState([]);
     const [reviews, setReviews] = useState([]);
-    // const [modal, setModal] = useState();
     const { setModal, user } = useContext(AuthShare);
     const [showAlert, setShowAlert] = useState();
     const email = user?.email;
-    const [loading, setLoading] = useState(true);
-
-
-
-    // const { imgbody, imgh, imgrestaurant } = homePageInfo[0];
-
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/homeInfo')
+        fetch('https://brasila-server.vercel.app/homeInfo')
             .then(res => res.json())
             .then(data => setHomePageInfo(data))
-        // setIsreload(!isreload)
         // .then(data => console.log(data))
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:5000/homePromtions')
+        fetch('https://brasila-server.vercel.app/homePromtions')
             .then(res => res.json())
             // .then(data => console.log(data))
             .then(data => setPromotionInfo(data))
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:5000/allreviews')
+        fetch('https://brasila-server.vercel.app/allreviews')
             .then(res => res.json())
             // .then(data => console.log(data))
             .then(data => setReviews(data))
     }, []);
 
-    // console.log(reviews[0]);
-    // console.log(promotionInfo[0]);
-    // console.log(promotionInfo[0]?.img);
-    // console.log(promotionInfo[0]?.text);
-    // console.log(promotionInfo[0]?.title);
 
-    // console.log(modal);
-
-
-    // const [fromDate, setFromDate] = useState('');
-    // const [toDate, setToDate] = useState('');
-    // const [totaldays, setTotaldays] = useState('');
     const { fromDate, setFromDate, toDate, setToDate, totaldays, setTotaldays } = useContext(AuthShare);
     const staDate = moment(fromDate, 'DD-MM-YYYY');
     const enDate = moment(toDate, 'DD-MM-YYYY');
-    // const totalDays = moment.duration(enDate.diff(staDate)).asDays() + 1;
     setTotaldays(moment.duration(enDate.diff(staDate)).asDays() + 1);
 
     const { RangePicker } = DatePicker;
     const dataRange = (dates) => {
-        // console.log(moment(dates[0]).format('DD-MM-YYYY'));
-        // console.log(moment(dates[1]).format('DD-MM-YYYY'));
         setFromDate(dates[0].format('DD-MM-YYYY'));
         setToDate(dates[1].format('DD-MM-YYYY'));
-        // setTotaldays(moment.duration(enDate.diff(staDate)).asDays() + 1);
     }
-    // console.log('FromDate', staDate, 'ToDate', enDate);
-    // console.log(totalDays);
-
 
     const [adults, setAdults] = useState('Select Member/Members Here');
     const [person, setPerson] = useState();
@@ -125,36 +86,8 @@ const Banner = () => {
     };
 
     const handleWithoutData = () => {
-        // alert("Please, select Date & Persons. ")
         setShowAlert('To, Get Room. Please, Select Date & Member');
     }
-
-
-    // console.log("fromDate", fromDate, "Todate", toDate, "totalDays", totaldays, "TotalPerson", person);
-    // const handleKids = (ok) => {
-    //     setChilds(ok);
-    //     setTotalChild(ok);
-    //     const total = totalPerson + totalChild;
-    //     setPerson(total);
-
-    // };
-
-    // const handleFind = (persons) => {
-    // }
-
-    // console.log("adults", adults, "child", childs, "input-adults", totalChild, 'input-child', totalChild, "totalPersons", person);
-    // setTotalPerson(adults + childs);
-
-    //
-
-    // const numTotalPerson = Number(totalPerson);
-
-    // promotionInfo
-    // console.log(totalPerson);
-
-
-
-
 
 
     return (
@@ -164,87 +97,29 @@ const Banner = () => {
                 promotionInfo.length > 0 ?
                     <>
                         <div>
-
-                            {/* <p className='text-xs text-center text-green-600 uppercase'>Cautions: Design Concept & Some content Collected from Royal Tulip Brasila</p> */}
-
                             {/* Home Banner */}
 
                             <div id='home' className='grid md:grid-cols-12 m-6 mt-0'>
 
                                 <div className='col-span-8' >
-                                    {/* <img className='' src={image} alt="" /> */}
                                     <img className='' src={homePageInfo[0]?.imgh} alt="" />
                                 </div>
 
                                 <div className='bg-slate-900 col-span-4   '>
 
                                     <div className='py-12 '>
-                                        {/* <div> */}
                                         <div className='mb-10'>
                                             <h1 className='text-3xl text-center text-white'>Your Stay</h1>
                                         </div>
 
-                                        {/* <div className='w-4/5 mx-auto m-3 grid grid-cols-2 gap-2'> */}
-                                        {/* <button className='bg-yellow-500 py-3 px-10 text-black text-sm '>
-                    Sat. 1/1/22
-                </button> */}
-                                        {/* <div className='relative flex items-center justify-end text-center  text-black text-sm '>
-                    <div className='absolute z-20 pr-4'>
-                        <BsCalendar className='text-ascent text-base ' />
-                    </div>
-                    <DatePicker className='pl-2 w-11/12 py-3 bg-yellow-300'
-                        selected={startDate}
-                        placeholderText='Check In'
-                        onChange={(date) => setStartDate(date)}
-                    />
-                </div> */}
-
-                                        {/* <button className='bg-yellow-500 py-3 px-10  text-sm'>
-                    Sun. 1/3/23
-                </button> */}
-
-                                        {/* <div className='relative flex items-center justify-end  text-center  text-black text-sm '>
-
-                    <div className='absolute z-20 pr-4'>
-                        <BsCalendar className='text-ascent text-base ' />
-                    </div>
-
-                    <DatePicker className='pl-2 w-11/12 py-3 bg-yellow-300'
-                        selected={endDate}
-                        placeholderText='Check Out'
-                        onChange={(date) => setEndDate(date)}
-                    />
-                </div> */}
-
-                                        {/* </div> */}
-
-                                        {/* Start DatePicker from AntD */}
                                         <div className='w-3/4 mx-auto mt-3 mb-6 '>
                                             <Space direction="vertical" size={12}>
                                                 <RangePicker className='px-4 py-[10px] bg-yellow-300 rounded-none' format='DD-MM-YYYY' onChange={dataRange} />
                                             </Space>
                                         </div>
 
-                                        {/* Start DatePicker from AntD */}
-
-
-
-
                                         <div className=' w-3/4 mx-auto'>
-                                            {/* <button className='bg-slate-600 py-4 px-16  text-black '>
 
-                    <div className='flex justify-start'>
-                        <div className='text-sm'>
-
-                            1 chambre - 1 occupant
-
-                        </div>
-                        <div className='text-sm'>
-                            amie
-                        </div>
-                    </div>
-
-                </button> */}
                                             <div>
                                                 <Menu as='div' className='bg-yellow-300 text-black relative' >
                                                     <Menu.Button className='w-full h-full px-4 py-3 flex items-center justify-between'>
@@ -263,30 +138,8 @@ const Banner = () => {
                                                 </Menu>
                                             </div>
 
-                                            {/* <div> */}
-                                            {/* <Menu as='div' className='bg-yellow-300 text-black relative' >
-                        <Menu.Button className='w-full h-full px-4 py-3 flex items-center justify-between'> */}
-                                            {/* {childs} */}
-                                            {/* <BsChevronDown className='text-base' />
-                        </Menu.Button>
-                        <Menu.Items as='ul' className='bg-white w-full flex-col z-40 absolute'>
-                            {
-                                list.map((li, index) => {
-                                    return <Menu.Item as='li' className='border-b last-of-type:border-b-0 h-12 hover:bg-yellow-100 w-full flex items-center justify-center cursor-pointer' key={index} */}
-                                            {/* // onClick={() => handleKids(li.value, "Kids")} */}
-                                            {/* > {li.name}</Menu.Item>
-                                })
-                            }
-                        </Menu.Items>
-                    </Menu>
-                </div> */}
-                                        </div>
 
-                                        {/* {totalDays && numTotalPerson ?
-                <p className='text-xs text-white'>You Have Select from {fromDate} to {toDate} & Total {totalPerson} Persons</p>
-                :
-                <></>
-            } */}
+                                        </div>
                                         {
                                             person && totaldays ?
                                                 <>
@@ -296,7 +149,6 @@ const Banner = () => {
                                                     <p className='uppercase text-xs text-red-400 text-center mt-5'>{showAlert}</p>
                                                 </>
                                         }
-                                        {/* <p>{showAlert}</p> */}
                                         <div className='w-3/4 mx-auto mt-6'>
 
                                             {
@@ -305,7 +157,6 @@ const Banner = () => {
                                                     <>
                                                         <Link to={`/search/${person}`}>
                                                             <button className='bg-yellow-300 px-7 py-[12px] w-full mx-auto text-black '
-                                                            // onClick={() => handleFind(adults)}
                                                             >
                                                                 FIND A ROOM
                                                             </button>
@@ -320,18 +171,7 @@ const Banner = () => {
                                                         </button>
                                                     </>
                                             }
-
-                                            {/* <Link to={`/search/${person}`}>
-                    <button className='bg-yellow-300 py-3 px-24 text-black '
-                    // onClick={() => handleFind(adults)}
-                    >
-                        FIND A ROOM
-                    </button>
-                </Link> */}
                                         </div>
-
-                                        {/* </div> */}
-
                                     </div>
                                 </div>
 
@@ -358,8 +198,6 @@ const Banner = () => {
                                 </div>
 
                                 <div className=' col-span-4 text-white'>
-                                    {/* <img src={image2} alt="" /> */}
-                                    {/* <img src={imgbody} alt="" /> */}
                                     <img src={homePageInfo[0]?.imgbody} alt="" />
 
                                 </div>
@@ -375,7 +213,6 @@ const Banner = () => {
                                     <div className='flex'>
                                         <div className='ml-6 text-yellow-300'>
                                             <FaSearchLocation />
-                                            {/* <Geolocation /> */}
                                         </div>
                                         <div >
                                             <p className='text-sm ml-2'>
@@ -451,9 +288,7 @@ const Banner = () => {
 
                                 <div>
                                     <img className='h-16' src={aircondition} alt="" />
-                                    {/* <div className='w-full mx-auto'> */}
                                     <p className='text-xs mt-2 mr-2'>Air Conditionned</p>
-                                    {/* </div> */}
                                 </div>
                                 <div>
                                     <img className='h-16' src={restaurant} alt="" />
@@ -520,7 +355,6 @@ const Banner = () => {
 
 
                                 <div className='col-span-8'>
-                                    {/* <img className='h-80 w-full' src={barImage} alt="" /> */}
                                     <img className='h-80 w-full' src={homePageInfo[0]?.imgrestaurant} alt="" />
                                 </div>
                             </div>
@@ -532,7 +366,6 @@ const Banner = () => {
                             <div className='grid lg:grid-cols-3 mx-6 '>
                                 <div></div>
                                 <div >
-                                    {/* <p>Take advantage of our exceptional offers</p> */}
                                     <p className='text-center my-4 text-xl'>Take advantage of our exceptional offers</p>
                                 </div>
                                 <div className='flex lg:justify-end offers'>
@@ -545,10 +378,11 @@ const Banner = () => {
                             <div className='grid lg:grid-cols-3 promotions gap-5 m-6'>
 
                                 {
-                                    // promotionInfo.map(promotion => console.log(promotion.img))
                                     promotionInfo.map(promotion =>
                                         <div key={promotion._id}
+
                                         // modal={promotion}
+
                                         >
                                             <img className='h-64 w-full' src={promotion.img} alt="" />
                                             <p className='m-4'>{promotion.title}</p>
@@ -577,70 +411,38 @@ const Banner = () => {
                             <div className='w-3/4 mx-auto' id='comments'>
                                 <h1 className='mt-12 text-2xl font-bold text-center'>Comments</h1>
                                 <h1 className='text-2xl font-bold mb-4 text-center'>What They Say About Us </h1>
-
-                                {/* <div className='flex'>
-        <div className='w-8 h-6 bg-lime-600 font-bold text-white px-1 '>
-            4.7
-        </div>
-        <div>
-            <h1 className='ml-1 text-xl font-bold'>
-                Excellent
-            </h1>
-            <div className='flex'>
-                <FaStar className='text-lime-600'></FaStar>
-                <FaStar className='text-lime-600'></FaStar>
-                <FaStar className='text-lime-600'></FaStar>
-                <FaStar className='text-lime-600'></FaStar>
-                <FaStarHalfAlt className='text-lime-600'></FaStarHalfAlt>
-            </div>
-
-
-
-
-        </div>
-        <div className='ml-8'>
-            <h1 className='text-lg'>   Summary of 5,282 reviews</h1>
-        </div>
-    </div> */}
-
                                 <div className='grid lg:grid-cols-4 small gap-1 mt-6'>
 
                                     <div >
                                         <Link className='px-2 py-3 flex border border-slate-300 bg-gray-200 text-center rounded' >
-                                            {/* <div>icn</div> */}
+
                                             <div className='ml-4'>
                                                 <h4>All Reviews</h4>
-                                                {/* <h4>100%</h4> */}
+
                                             </div>
                                         </Link>
                                     </div>
 
                                     <div >
                                         <Link className='px-2 py-3 flex border border-slate-300 bg-gray-200 text-center rounded' >
-                                            {/* <div>icn</div> */}
                                             <div className='ml-4'>
                                                 <h4> Food review </h4>
-                                                {/* <h4>100%</h4> */}
                                             </div>
                                         </Link>
                                     </div>
 
                                     <div >
                                         <Link className='px-2 py-3 flex border border-slate-300 bg-gray-200 text-center rounded' >
-                                            {/* <div>icn</div> */}
                                             <div className='ml-4'>
                                                 <h4> Environment  </h4>
-                                                {/* <h4>100%</h4> */}
                                             </div>
                                         </Link>
                                     </div>
 
                                     <div >
                                         <Link className='px-2 py-3 flex border border-slate-300 bg-gray-200 text-center rounded' >
-                                            {/* <div>icn</div> */}
                                             <div className='ml-4'>
                                                 <h4>Families </h4>
-                                                {/* <h4>100%</h4> */}
                                             </div>
                                         </Link>
                                     </div>
@@ -653,7 +455,6 @@ const Banner = () => {
                                     <div className='col-span-8'>
 
                                         <div className='border-slate-400 bg-gray-100 m-3 px-4 pt-4 pb-2 rounded comment '>
-                                            {/* <h1 className='text-lg'>Rated <span className='font-bold'>4.7</span>/5 based on reviews from <span className='font-bold'>all travelers.</span> </h1> */}
                                             <h2>Excellent lake hotel. Great rooms in excellent location. Great pool. Awesome vibe.</h2>
                                         </div>
                                         <div className=''>
@@ -689,9 +490,7 @@ const Banner = () => {
                                                                     <div className='flex items-center gap-2'>
                                                                         <div className="chat-image avatar">
                                                                             <div className=" rounded-full">
-                                                                                {/* <FaUserAlt></FaUserAlt> */}
                                                                                 <FaUserAlt></FaUserAlt>
-                                                                                {/* <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" /> */}
                                                                             </div>
                                                                         </div>
                                                                         <h1 className=' text-slate-900 mb-0'>

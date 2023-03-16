@@ -12,7 +12,6 @@ const Offers = () => {
     return (
         <div className='margin'>
             <PromotionModal></PromotionModal>
-            {/* Banner */}
 
             <div className='grid lg:grid-cols-12 m-6'>
                 <div className='col-span-8' >
@@ -40,6 +39,7 @@ const Offers = () => {
             </div>
 
             {/* All Our Offers */}
+
             <div className='m-6'>
                 <h1 className='text-xl font-bold m-2'>
                     All Our Offers

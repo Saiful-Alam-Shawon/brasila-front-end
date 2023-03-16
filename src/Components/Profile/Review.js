@@ -16,17 +16,15 @@ const Review = () => {
     } = theme.useToken();
 
     const handleRating = (number) => {
-        console.log('Ratings', number);
+        // console.log('Ratings', number);
         setfoodRatings(number);
     };
 
     const handleRating1 = (number) => {
-        console.log('Ratings', number);
         setEnvironmentRatings(number);
     };
 
     const handleRating2 = (number) => {
-        console.log('Ratings', number);
         setOverAllRatings(number);
     };
 
@@ -34,8 +32,6 @@ const Review = () => {
         e.preventDefault();
         const form = e.target;
         const data = e.target.email.value;
-        // console.log("Submiting Food All", foodRatings, data);
-
         const foodData = {
             rating: hospitalityRatings,
             review: data,
@@ -44,7 +40,7 @@ const Review = () => {
         }
         // console.log(foodData);
 
-        fetch('http://localhost:5000/review', {
+        fetch('https://brasila-server.vercel.app/review', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -56,9 +52,6 @@ const Review = () => {
                 // console.log(data);
                 if (data.acknowledged) {
                     // navigate('/');
-                    // setLoading(false);
-                    // setIsreload(!isreload);
-                    // toast.success('Successfully User Created')
                 }
             })
             .catch(error => console.log(error.message));
@@ -77,9 +70,8 @@ const Review = () => {
             category: "environment",
             email
         }
-        // console.log(environmentData);
 
-        fetch('http://localhost:5000/review', {
+        fetch('https://brasila-server.vercel.app/review', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -91,9 +83,6 @@ const Review = () => {
                 console.log(data);
                 if (data.acknowledged) {
                     // navigate('/');
-                    // setLoading(false);
-                    // setIsreload(!isreload);
-                    // toast.success('Successfully User Created')
                 }
             })
             .catch(error => console.log(error.message));
@@ -104,7 +93,6 @@ const Review = () => {
         e.preventDefault();
         const form = e.target;
         const data = e.target.email.value;
-        // console.log("Submiting Food All", foodRatings, data);
 
         const hospitalityData = {
             rating: foodRatings,
@@ -112,9 +100,8 @@ const Review = () => {
             category: "hospitality",
             email
         }
-        // console.log(hospitalityData);
 
-        fetch('http://localhost:5000/review', {
+        fetch('https://brasila-server.vercel.app/review', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -126,9 +113,6 @@ const Review = () => {
                 console.log(data);
                 if (data.acknowledged) {
                     // navigate('/');
-                    // setLoading(false);
-                    // setIsreload(!isreload);
-                    // toast.success('Successfully User Created')
                 }
             })
             .catch(error => console.log(error.message));
@@ -155,20 +139,15 @@ const Review = () => {
                                 Home
                             </Link>
                         </Breadcrumb.Item>
-                        {/* </Link> */}
-                        {/* <Link to='/review'> */}
                         <Breadcrumb.Item href=''>
                             <Link to='/review'>
                                 Rate Us
                             </Link>
                         </Breadcrumb.Item>
-                        {/* </Link> */}
-                        {/* <Link to='/myreview'> */}
                         <Breadcrumb.Item href=''>
                             <Link to='/myreview'>
                                 My Reviews
                             </Link></Breadcrumb.Item>
-                        {/* </Link> */}
                     </Breadcrumb>
                     <div
                         className="site-layout-content"
@@ -199,8 +178,6 @@ const Review = () => {
                                         <input onClick={() => { handleRating(5) }} type="radio" name="rating-10" className="bg-green-500 mask mask-star-2 mask-half-2" />
                                         <div>
                                             <div className="form-control">
-                                                {/* <input type="text" /> */}
-                                                {/* <input type="text" name='email' placeholder="email" className="input input-bordered" /> */}
                                                 <textarea placeholder="Bio" name='email' className="textarea textarea-bordered textarea-lg w-full max-w-xs" ></textarea>
 
                                             </div>
@@ -231,8 +208,6 @@ const Review = () => {
 
                                     <div>
                                         <div className="form-control">
-                                            {/* <input type="text" /> */}
-                                            {/* <input type="text" name='email' placeholder="email" className="input input-bordered" /> */}
                                             <textarea placeholder="Bio" name='email' className="textarea textarea-bordered textarea-lg w-full max-w-xs" ></textarea>
 
                                         </div>
@@ -263,8 +238,6 @@ const Review = () => {
                                     <input onClick={() => { handleRating2(5) }} type="radio" name="rating-10" className="bg-green-500 mask mask-star-2 mask-half-2" />
                                     <div>
                                         <div className="form-control">
-                                            {/* <input type="text" /> */}
-                                            {/* <input type="text" name='email' placeholder="email" className="input input-bordered" /> */}
                                             <textarea placeholder="Bio" name='email' className="textarea textarea-bordered textarea-lg w-full max-w-xs" ></textarea>
 
                                         </div>
